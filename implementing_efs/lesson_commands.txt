@@ -1,16 +1,38 @@
-# CREATE EFS
+#Use this tinyurl to create the stack for this demo
+https://tinyurl.com/yhw82cyc
 
+
+# CREATE EFS
+Name : A4L-EFS
+Choose Regional
+Click Customize button
+Uncheck the Automatic Backups
+Performance mode - General
+Throughput mode - Bursting
+Uncheck the Encryption
+Don't give any tags
+click Next
+
+You will be under Mount Targets page
+Remove all the security Groups which is there in the drop down selected.
+Make sure AZ chosen as us-east-1a,1b,1c.
+Under the Subnetid section, please choose application subnets which has "app" keyword.
+Now Choose the Security Group with the name "Implementing EFS" in all the Zones
+Dont' enter anything under "File System Policy" page
+Click Next and Create.
 
 # INSTANCE A
 
-yum -y install amazon-efs-utils
-
-sudo ls -la /
 df -k
 sudo mkdir -p /efs/wp-content
-sudo nano /etc/fstab
+sudo yum -y install amazon-efs-utils
+sudo mkdir -p /efs/wp-content
+sudo vi /etc/fstab
 
-file-system-id:/ /efs/wp-content efs _netdev,tls,iam 0 0 
+file-system-id:/ /efs/wp-content efs _netdev,tls,iam 0 0
+For Example: you need to copy the filesystemid from EFS which we created at the first step.
+and it should like below entry
+fs-042242f7ad2218573:/ /efs/wp-content efs _netdev,tls,iam 0 0
 
 sudo mount /efs/wp-content
 df -k
@@ -19,8 +41,11 @@ sudo touch amazingtestfile.txt
 
 # INSTANCE B
 
+df -k
+sudo yum -y install amazon-efs-utils
 sudo mkdir -p /efs/wp-content
-sudo nano /etc/fstab
+sudo vi /etc/fstab
 file-system-id:/ /efs/wp-content efs _netdev,tls,iam 0 0
 sudo mount /efs/wp-content
+cd /efs/wp-content
 ls -la
