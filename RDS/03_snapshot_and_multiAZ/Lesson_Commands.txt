@@ -37,7 +37,7 @@ Select it and Click on Action, Click Restore Snapshot
 Remember, Restoring Snapshot always creates brand new DB instance.
 Choose DB instance identifier as "a4lwordpress-restore"
 Choose the right VPC
-Create New SG
+Under VPC security group, choose existing, 
 Click the drop down and remove default and add RDSMULTIAZ RDS SECURITY GROUP
 Under DB Instance Class - Choose Burstable, choose include previous generation classes
 and select db.t2.micro
