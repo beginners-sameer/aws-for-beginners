@@ -1,0 +1,7 @@
+https://tinyurl.com/2p92f3d8
+
+Make sure you copy the snapshot arn of "a4lwordpress-with-cat-post-mysql-5-7"
+
+Take a snapshot of the writer instance with the below name.
+
+Snapshot Name : a4lwordpress-aurora-with-cat-post
