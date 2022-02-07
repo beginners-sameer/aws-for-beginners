@@ -1,0 +1,66 @@
+10.0.0.0/16  my vpc range
+
+subnet creation:
+Public_1A   under 1a AZ
+10.0.1.0/24  - cidr block
+
+Private_1A  under 1a AZ
+10.0.2.0/24  - cidr block
+
+Public_1B  under 1b AZ
+10.0.20.0/24 - cidr block
+
+Private_1B  under 1b AZ
+10.0.21.0/24 - cidr block
+
+Now Create an IGW:
+my-webinar-IGW
+Attach it to your vpc
+
+Create a Public RT:
+Public Route Table
+
+Create a Private RT:
+Private Route Table
+
+In Public RT, add the IGW:
+
+Now Associate the subnets in your Private RT first:
+Choose the private rt first and choose private subnets 1a & 1b
+
+now do the same kind of associate to your public RT with public subnets
+
+Now EDIT DNS HOSTNAMES in the VPC
+
+Launch one instance from public and private subnet
+Create 1st instance on public_1a
+Create a new SG with some name "Webinar-Public-SG" and allow only ssh
+Create 2nd instance on private_1b
+Create a new SG with some name "Webinar-Private-SG" and delete the ssh
+
+connect to the public instance and ping google.com, you will get a reply
+Now try to ping the private ip of the 2ndinstance from here.. you won't get any reply. why ?
+
+Now you need to go to 2nd private instance's security group and add ICMP protocol and give the source as "public security group"
+
+Create VPC Peering:
+Create new vpc with 10.1.0.0/16 
+Create new subnet with 10.1.1.0/24 under 1a as public-new-subnet
+Launch an instance in this vpc & subnet with the ssh allow anywhere
+create the igw and attach it to the new vpc
+Go to route table, you will have only one route table related to the above vpc
+Add a new route entry allowing all ips "0.0.0.0/0" to new IGW
+connec to this instance
+Try to ping the instance 2 from instance 1 - it iwll not work
+
+go to vpc peering and create the connection, accept the requests
+go to rt of the new vpc and add the new record for 1st vpc and choosing peering connection
+do the same for webinar vpc add the new record for 2nd vpc and choosing peering connection
+
+add the security group rule in the new vpc ec2 instance
+
+
+
+
+
+
