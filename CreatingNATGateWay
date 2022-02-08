@@ -18,3 +18,5 @@ How can you access the website publicly?
 Create a Classic LB with new SG created with only 80 ports getting allowed.
 Choose both public subnets
 Choose then private ec2 instances
+HTTP PORT 80 should be in the listener mode
+Health check - TCP
