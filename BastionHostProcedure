@@ -43,11 +43,30 @@ Go to EC2 SECTION:
 Launch 1st ec2 instance by choosing correct vpc and subnet "Private3A"
 Create a new SG "Private-EC2" by allowing SSH & HTTP from everywhere.
 Create a New Key Pair with the name "security" and download it by choosing RSA option
+Name of the instance : Private3AInstance
 
 Launch 2nd ec2 instance by choosing correct vpc and subnet "Private4B"
 Choose the security group which was created earlier "Private-EC2"
 Choose the existing key pair "security" and launch the instances.
+Name of the instance : Private4BInstance
 
 Please analyze both the instances that they don't have public ip to connect through. EC2-instance connect will also not work.
+
+Hence we are introducing a concept called "Bastion Host"
+
+Launch 3rd ec2 instance by choosing correct vpc and subnet "Public1A" and Enable Auto-Assign Public IP
+Tag : Name - Bastion Host
+Create a new SG : Bastion-SG and allow only SSH from anywhere
+Choose the existing key pair "security" and launch the instances.
+
+Now login to bastion host ec2 machine using ec2 instance connect.
+You need to create a same key pair file name called "security.pem" in the home folder 
+nano security.pem
+make sure run this command "chmod 400 security.pem"
+Copy the security.pem file which you have already downloaded from your windows laptop to bastion host machine and then save it.
+
+Now try to access the private instance ips using the command " ssh ec2-user@privatipoftheinstance -i security.pem
+It should connect to the private instances using bastion host.
+
 
 
