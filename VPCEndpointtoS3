@@ -1,0 +1,14 @@
+Summary:
+Assign an s3 role to a private ec2 instance first
+Try to connect to the above ec2 instance using bastion host or jump server
+once it's connected, then try to execute the command "aws s3 ls".. 
+If it's not working, then we have to create NAT gateway and put that NAT gateway into public ip.
+now verify whether aws s3 ls command is working or not.
+If it's working then the connection is happening through NAT gateway to fetch the s3 details into the private ec2 instance.
+Delete the NAT gateway and try to access "aws s3 ls" - it will not work.
+
+Now we will introduce the VPC endpoint which will not go through internet rather it will be inside the aws network itself.
+Create a vpc endpoint / chosoe the right vpc / put this endpoint into the private subnet / choose the endpoint for s3 gateway / put this entry in the private route table
+now try to access aws s3 ls.. it should work. 
+
+now the connection is happening inside aws network using vpc gateway endpoint concept.
