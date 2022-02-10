@@ -1,0 +1,21 @@
+tinyurl: https://tinyurl.com/yckv8f6h    This stack will create two ec2 instances
+
+Step1:
+Create a Lambda Role for Lambda to communicate with other services. In this example, this role which you are going to create will communicate from lambda to ec2 and cloudwatch logs services.
+
+Note: While Creating Role, First Create a Policy called "Lambdastartandstop" and copy/paste the file content inside the json editor. 
+
+File Name : lambdarole
+
+Now you create the role "EC2StartStopLambdaRole" by choosing lambda as a common use case.
+
+
+Step2: 
+Go to EC2 page, and copy and paste both of the ec2 instanc ids in a separate notepad
+
+
+Step3:
+Now Go to Lambda and create function for STOP
+Function Name : EC2Stop   it should be from Author from Scratch page
+
+Python 3.8
