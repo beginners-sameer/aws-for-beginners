@@ -17,5 +17,79 @@ Go to EC2 page, and copy and paste both of the ec2 instanc ids in a separate not
 Step3:
 Now Go to Lambda and create function for STOP
 Function Name : EC2Stop   it should be from Author from Scratch page
+Choose Python 3.8
+Change Default Execution Role which you have created earlier
+Create Function
 
+Replace the code content with the file name stop.py and paste it in lambda editor
+Click on Deploy and make sure it's deployed
+Edit the Environment Variable and add the instance ids with , together
+Key = EC2_INSTANCES
+Value = instanceid1,instanceid2
+
+Click on Test, create an example event name "test", create create
+Click on Test, you will see execution results.
+Now EC2 instances stopped.
+This process is called Manual Invocation
+
+Step4:
+Create one more function called "EC2Start"
 Python 3.8
+Same role
+Create Function
+Copy the file name content start and paste it in the editor
+Deploy it
+Edit the Environment variables as before
+Test it
+Now instances would have started already
+
+
+Step5: EventDriven WorkFlow
+Create one more function called "EC2Protect"
+Python 3.8
+Use the same role
+Copy and paste the code from the file "protect" and paste it in the editor
+Deploy it
+
+Step6: Go to Eventbridge services
+Create Rule called "EC2Protect"
+Description : Start Proected Instances
+Event Pattern
+Pre-Defined Pattern Services
+SErvice name : EC2
+Event type : stat-change notification
+specified state : stopped
+specififed instance : instanceid1
+Select Targets:
+Choose Lambda Function
+Selection the Function name "EC2Protect"
+Create
+
+Step7: 
+EC2 page
+Stop the 2nd instance
+refresh the page, you will see that the 2nd instance will be in stopped state only
+try to stop the 1st isntance, 
+now refresh the page, you will the 1st instance will automatically start agian because of the eventrule bridge.
+
+Step8 :  Goto CloudWatch Logs
+Look for the Log Groups  called EC2Protect
+
+Step9 : Goto EC2 page
+Start the 2nd instance
+
+Step10: Goto EventBridge Services
+Create a Rule "EC2Stop"
+Schedule 
+Choose the Cron Expression. minutes hours dayofthemonth month dayoftheweek      55 15 * * *  this will be in UTC time zone. you need to map it accordingly
+Choose the Lambda Function called "EC2Stop"
+
+Now EC2STOP will trigger as per the schedule, it will run the lambda function against both the instances and both the instances will stop.
+Since Instance1 protected by PROTECT eventrule bridge, it will start the instance1
+
+
+
+
+
+
+
