@@ -41,15 +41,18 @@ Create Database button.
 
 
 # Backup of Source Database
-mysqldump -h 10.16.49.251 -u a4lwordpress -p a4lwordpress > a4lwordpress.sql
+mysqldump -h 10.16.48.246 -u a4lwordpress -p a4lwordpress > a4lwordpress.sql
 
 
 # Restore to Destination Database
-mysql -h a4lwordpress.cnwvs3q3rdap.us-east-1.rds.amazonaws.com -u a4lwordpress -p a4lwordpress < a4lwordpress.sql 
+mysql -h a4lwordpress.c5kfdscptc5y.us-east-1.rds.amazonaws.com -u a4lwordpress -p a4lwordpress < a4lwordpress.sql 
 
 # Change WP Config
 cd /var/www/html
 sudo nano wp-config.php
+
+a4lwordpress.c5kfdscptc5y.us-east-1.rds.amazonaws.com
+
 
 replace
 /** MySQL hostname */

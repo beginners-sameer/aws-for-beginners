@@ -14,3 +14,18 @@ aws ssm get-parameters --names /my-cat-app/dbstring
 aws ssm get-parameters-by-path --path /my-cat-app/ 
 aws ssm get-parameters-by-path --path /my-cat-app/ --with-decryption 
 
+
+/my-bike-app/dbstring        db.allthebikes.com:3306
+/my-bike-app/dbuser          bossbike
+/my-bike-app/dbpassword      amazingsecretpassword1337 (encrypted)
+/my-car-app/dbstring        db.ifwereallymusthavebikes.com:3306
+/rate-my-bike/dbstring    db.thisisprettyrandom.com:3306
+
+
+# GET PARAMETERS (if using cloudshell)
+aws ssm get-parameters --names /rate-my-bike/dbstring
+aws ssm get-parameters --names /my-car-app/dbstring
+aws ssm get-parameters --names /my-bike-app/dbstring
+aws ssm get-parameters-by-path --path /my-bike-app/ 
+aws ssm get-parameters-by-path --path /my-bike-app/ --with-decryption 
+

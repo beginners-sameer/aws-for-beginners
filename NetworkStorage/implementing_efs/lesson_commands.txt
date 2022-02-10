@@ -26,10 +26,10 @@ Click Next and Create.
 df -k
 sudo mkdir -p /efs/wp-content
 sudo yum -y install amazon-efs-utils
-sudo mkdir -p /efs/wp-content
 sudo vi /etc/fstab
 
 file-system-id:/ /efs/wp-content efs _netdev,tls,iam 0 0
+fs-09e67a853024af98d:/ /efs/wp-content efs _netdev,tls,iam 0 0
 For Example: you need to copy the filesystemid from EFS which we created at the first step.
 and it should like below entry
 fs-042242f7ad2218573:/ /efs/wp-content efs _netdev,tls,iam 0 0

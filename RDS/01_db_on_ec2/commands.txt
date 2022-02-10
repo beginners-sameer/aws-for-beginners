@@ -20,7 +20,7 @@ mysqldump -u root -p a4lwordpress > a4lwordpress.sql
 
 # Restore to Destination Database
 mysql -h privateipof_a4l-mariadb -u a4lwordpress -p a4lwordpress < a4lwordpress.sql 
-mysql -h 10.16.50.150 -u a4lwordpress -p a4lwordpress < a4lwordpress.sql 
+mysql -h 10.16.48.168 -u a4lwordpress -p a4lwordpress < a4lwordpress.sql 
 
 # Change WP Config
 cd /var/www/html
