@@ -42,5 +42,7 @@ Create s3 bucket
 Put the index and error.html 
 enable static website hosting
 update the proper s3 permissions
-Verify the s3 statis endpoint is working or not.
+Verify the s3 static endpoint is working or not.
+
+Explain about few things on developers tools
 
