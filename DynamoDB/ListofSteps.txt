@@ -1,0 +1,10 @@
+Step1:
+Create Table - DemoTable
+Partition Key - user_id
+Partition Key + Sort Key = Primary Key
+Settings - Customize 
+Read/Write - On-DEmand for unpredictable workloads
+             Provisioned - REad and Write Capacity. Turn it off for now
+Look for Capacity Calculator
+Look for Estimated Cost
+Create One Demo Table and multiple items
