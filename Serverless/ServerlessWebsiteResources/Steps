@@ -1,0 +1,46 @@
+Step1:
+Create a Lambda Function : MyWebSiteLambda
+Runtime : Python 3.6
+Role : Create a New Role - MyLambdaExecutionRole
+Policy Templates : Search for "MicroServices"
+Create Lambda Function
+
+Step2:
+Copy the content of helloawsguys.py into the code editor
+Click File, Save and Deploy button
+
+Step3:
+Click on Add Trigger
+Select API Gateway
+Create an API
+API type - REST API
+Security - IAM
+Click on Add
+Click on Deploy
+
+Step4:
+Verify the APIGateway, which will open the API Gateway
+Delete the Any Method
+
+
+Step 5:
+CReate a Method - GET 
+Integration type - Lambda Function
+Use Lambda Proxy Integration - checked
+Find your lambda function
+
+Step 6:
+Deploy the API
+Choose default 
+
+Step 7:
+Copy the Invoke URL from GET
+Go to index.html and replace that api gateway url with your apigateway url .. which is in 11th line
+
+Step 8:
+Create s3 bucket
+Put the index and error.html 
+enable static website hosting
+update the proper s3 permissions
+Verify the s3 statis endpoint is working or not.
+
