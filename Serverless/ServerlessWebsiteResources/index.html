@@ -1,0 +1,22 @@
+<html>
+<script>
+
+function myFunction() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("my-demo").innerHTML = this.responseText;
+        }
+    };
+    xhttp.open("GET", "https://wfo5lgyu2k.execute-api.us-east-1.amazonaws.com/default/", true);
+    xhttp.send();
+
+}
+
+</script>
+<body><div align="center"><br><br><br><br>
+<h1>Hello <span id="my-demo">AWS Beginners</span></h1>
+<button onclick="myFunction()">Touch Mee</button><br>
+<img src="https://donotdelete-sameer.s3.amazonaws.com/Lambo.jpeg"></div>
+</body>
+</html>
