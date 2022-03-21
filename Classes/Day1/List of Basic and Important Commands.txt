@@ -1,7 +1,17 @@
-df // df -h  // df -x tmpfs
+id
+groups
+cat /etc/group
+uname
+uname -a
+uname -r // for kernel version
+uname -i // 32 or 64 bit architecture identification
+cat /etc/os-release // this will display the flavour of linux
+*************************************************************
+df // df -h  // df -x tmpfs  // df --help // man df
 ping // ping -V  // ping -c 2  // ping -i 4 // ping -c 5 -q 
 wget
-ls  // ls -d * //  ls -R   //  ls -lh  // ls -a // ls -la // ls -lrt // ls -s or ls -S // ls > output.txt // 
+ls  //  ls -R   //  ls -lh  // ls -a // ls -la // ls -lrt //  ls > output.txt //  ls | wc -l
+*************************************************************
 grep // grep -i "word" "filename" // -c // grep -l "word" * // grep -n // grep -v // grep "^unix" // grep "os$"
 vi
 chmod
