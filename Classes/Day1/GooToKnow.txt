@@ -1,0 +1,7 @@
+Debian Linux Family -> dpkg ( Debian Package Management System ) and FrontEnd is APT (Advanced Packaging Tool) and Aptitude Tools.
+
+RedHat Derived Distributions -> RPM (Red Hat Package Manager) with FrontEnd YUM (Yellowdog Updater, Modified) and DNF (Dandified Yum) tools.
+
+Arch Distributions -> Pacman Package Manager
+
+Good to Read -> https://en.wikipedia.org/wiki/List_of_software_package_management_systems
