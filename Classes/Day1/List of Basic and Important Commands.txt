@@ -1,5 +1,6 @@
 df // df -h  // df -x tmpfs
 ping // ping -V  // ping -c 2  // ping -i 4 // ping -c 5 -q 
+wget
 ls  // ls -d * //  ls -R   //  ls -lh  // ls -a // ls -la // ls -lrt // ls -s or ls -S // ls > output.txt // 
 grep // grep -i "word" "filename" // -c // grep -l "word" * // grep -n // grep -v // grep "^unix" // grep "os$"
 vi
@@ -10,7 +11,6 @@ kill
 gzip 
 find // find /home/ubuntu -name geek* // find /home/ubuntu -name geek* -exec rm -i {} \; // find /home/ubuntu -empty // find /home/ubuntu -perm 775
 find /home/ubuntu -type f -name "geek*" -exec grep "unix" {} \;
-wget
 chown  // chown ownername filename //
 mkdir
 ifconfig // -a  // -s
