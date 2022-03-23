@@ -46,13 +46,11 @@ echo
 whereis
 which
 sudo
-top
+top // top -u username // SORT shortcut key M, N(pid), T, P(cpu) // Press C to see the full path //
 history
 more
 less
 exit
-ssh
 vi
-chmod
-sed
+sed // sed 's/unix/linux/' geekfile.txt // 
 
