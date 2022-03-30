@@ -1,0 +1,3 @@
+MFA Setup for the Root Account - https://youtu.be/J__51cFEF-M
+Create User with Admin Privileges - https://www.youtube.com/watch?v=6k_6JqvjtHc
+How to create Multiple Users and Provide Resource Permissions - https://www.youtube.com/watch?v=HJMvRvD2KUw
