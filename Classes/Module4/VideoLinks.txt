@@ -1,3 +1,11 @@
 MFA Setup for the Root Account - https://youtu.be/J__51cFEF-M
 Create User with Admin Privileges - https://www.youtube.com/watch?v=6k_6JqvjtHc
 How to create Multiple Users and Provide Resource Permissions - https://www.youtube.com/watch?v=HJMvRvD2KUw
+How to create Group and add the users and assign policies in AWS - https://youtu.be/76POqZasSI4
+How to create Role and Assign it and also password policy in AWS - https://youtu.be/eGctNSybPaM
+Various ways of communicating to AWS Services - https://youtu.be/YSSC9JsjKz4
+IAM Security Tools in AWS - https://youtu.be/7NnLqboz_fI
+IAM Policies Deep Dive for Beginners - https://youtu.be/DboQN1R-sls
+IAM Policies Deep Dive Continuation on creating custom policy - https://youtu.be/xO5f8DOHAxQ
+How to create User using cloudformation stack - https://youtu.be/moB2KYz9rF8
+How to delete the cloudformation stack - https://youtu.be/XATnxovj2Ww
