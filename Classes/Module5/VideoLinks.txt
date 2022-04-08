@@ -1,0 +1,10 @@
+14_AWS Console Tour and Options     											 https://youtu.be/rIPvjbjENn4
+1_Before Kick Starting AWS EC2 Tutorial									 		 https://youtu.be/tFCpy7Gz2sE
+2_EC2 Virtualization basic concepts with para virtual and hardware virtual pv and hvm  	 https://youtu.be/MVQ2T5wo1fM
+3_EC2 Categories and Instance Types										 	 https://youtu.be/MlWpKdOaGCw
+4_How to connect to ec2 instance using  pem for windows 10 and 11 users 				 https://youtu.be/KvDUjAWUT2g
+5_aws ec2 instance connect without keypair 										 https://youtu.be/QHqTNUCszjo
+6_How to launch an aws ec2 instance using boot strap, reading through various AMIs		 https://youtu.be/PXzgs650UFE
+7_AMI Deep Dive															 https://youtu.be/Pf2c0XJcKsM
+8_How to connect to the ec2 instance using session manager role						 https://youtu.be/wTQnWtGzISg
+9_EC2 Purchasing Options and Configure Instance Details Walkthrough					 https://youtu.be/oeQH0Ajv804
