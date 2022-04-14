@@ -1,0 +1,24 @@
+Create a New Volume
+Attach it to an ec2 instance
+
+Run the below commands:
+lsblk
+df -k
+sudo file -s /dev/xvdf    if it returns like below /dev/xvdf: data  which means file system is not created
+sudo mkfs -t xfs /dev/xvdf  // this will create the file system
+mkdir /home/ec2-user/ebstesting
+sudo mount /dev/xvdf /home/ec2-user/ebstesting
+touch sameeer.txt under /home/ec2-user/ebstesting
+Reboot the system
+
+now try lsblk  // the mountpoint must have gone
+sudo blkid  // this will give the UUID for each file system
+
+open /etc/fstab file in vi editor
+Add the line like this  UUID=d78edf5c-ef8b-43a3-904c-72ba97d5af5d/home/ec2-user/ebstestingxfsdefaults,nofail
+Save it
+sud mount -a
+cat /home/ec2-user/ebstesting/sameer.txt
+
+Reboot the machine
+and verify whether drive is active or not
