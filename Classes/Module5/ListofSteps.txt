@@ -22,3 +22,6 @@ cat /home/ec2-user/ebstesting/sameer.txt
 
 Reboot the machine
 and verify whether drive is active or not
+
+How to unmount?
+sudo umount -d /dev/xvdf
