@@ -1,0 +1,24 @@
+#! /bin/bash
+# Use this for your user data 
+# install httpd ( Linux 2 Version )
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1> Hello AWS Engineers from us-east-1a bringing up picture content </h1>" > /var/www/html/index.html
+echo "<h1> You have reached the picture file on instance "PicServer1a" </h1>" > /var/www/html/picture.html
+touch /var/www/html/health.html
+
+
+#! /bin/bash
+# Use this for your user data 
+# install httpd ( Linux 2 Version )
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1> Hello AWS Engineers from us-east-1b bringing up Video content </h1>" > /var/www/html/index.html
+echo "<h1> You have reached the video file on instance "VideoServer1b" </h1>" > /var/www/html/video.html
+touch /var/www/html/health.html
+
+
