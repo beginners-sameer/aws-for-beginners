@@ -1,0 +1,33 @@
+aws ec2 create-launch-template --launch-template-name my-template-for-auto-scaling --version-description version1 \
+  --launch-template-data '{"ImageId":"ami-0f9fc25dd2506cf6d","InstanceType":"t2.micro"}'            /// this will create a basic LT
+
+aws ec2 create-launch-template --launch-template-name my-template-for-auto-scaling --version-description version1 \
+  --launch-template-data '{"TagSpecifications":[{"ResourceType":"instance","Tags":[{"Key":"purpose","Value":"webserver"}]}],"ImageId":"ami-0f9fc25dd2506cf6d","InstanceType":"t2.micro"}'
+// this will create LT with tags
+
+
+aws ec2 create-launch-template --launch-template-name my-template-for-auto-scaling --version-description version1 \
+  --launch-template-data '{"BlockDeviceMappings":[{"DeviceName":"/dev/xvdcz","Ebs":{"VolumeSize":22,"VolumeType":"gp2","DeleteOnTermination":true}}],"ImageId":"ami-0f9fc25dd2506cf6d","InstanceType":"t2.micro"}'
+// this will create with extra EBS volumes
+
+
+aws ec2 describe-launch-templates --launch-template-names my-template-for-auto-scaling   // get the exact LT with the names
+
+aws ec2 describe-launch-template-versions --launch-template-id lt-068f72b729example      // get the exact LT with the ids
+
+
+aws ec2 create-launch-template-version --launch-template-id lt-0fe0c8109e93d7451 --version-description version2 \
+  --source-version 1 --launch-template-data "ImageId=ami-0f9fc25dd2506cf6d"                    // create the version from the previous LT version
+
+
+aws ec2 delete-launch-template-versions --launch-template-id lt-0fe0c8109e93d7451 --versions 2   // delete the specifi version
+
+aws ec2 delete-launch-template --launch-template-id lt-0fe0c8109e93d7451  // delete the launch template
+
+
+aws autoscaling update-auto-scaling-group --auto-scaling-group-name my-asg \
+  --launch-template LaunchTemplateId=lt-068f72b729example,Version='$Latest'         // telling autoscaling group to use the latest LT version
+
+aws autoscaling update-auto-scaling-group --auto-scaling-group-name my-asg \
+  --launch-template LaunchTemplateName=my-template-for-auto-scaling,Version='2'     // telling autoscaling group to use the specific LT version
+

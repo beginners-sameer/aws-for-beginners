@@ -1,0 +1,28 @@
+aws autoscaling create-auto-scaling-group --auto-scaling-group-name my-asg \
+  --launch-template "LaunchTemplateName=26thLT,Version=1" \
+  --vpc-zone-identifier "subnet-074f0177ac626e14a,subnet-0b961bc666fef41a9,subnet-0ed54d01e5bb307c1" \
+  --target-group-arns "arn:aws:elasticloadbalancing:us-east-1:634843314825:targetgroup/26thTG/e09c2002edc5bb7f" \
+  --max-size 5 --min-size 1 --desired-capacity 2      // this will create the asg with provided LT,subnets,tg
+
+aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name 26thASG_LBconnected   // this will give the asg details
+
+aws ec2 terminate-instances --instance-ids i-0e69cc3f05f825f4f    // this is to terminate the instance
+
+aws autoscaling describe-tags --filters Name=auto-scaling-group,Values=my-asg   // this will list out the tags
+
+aws autoscaling set-desired-capacity --auto-scaling-group-name my-asg \
+  --desired-capacity 2    // change the desired capacity
+
+aws autoscaling delete-auto-scaling-group --auto-scaling-group-name my-asg   // delete your autoscaling group
+
+aws autoscaling delete-auto-scaling-group --auto-scaling-group-name my-asg --force-delete    // delete it with force
+
+aws elbv2 delete-load-balancer --load-balancer-arn my-load-balancer-arn  // delete the alb or nlb 
+aws elbv2 delete-target-group --target-group-arn my-target-group-arn     // delete the tg
+
+aws elb delete-load-balancer --load-balancer-name my-load-balancer       // delete the clb
+
+aws cloudwatch delete-alarms --alarm-name Step-Scaling-AlarmHigh-AddCapacity Step-Scaling-AlarmLow-RemoveCapacity  // delete the cloudwatch alarms
+
+
+

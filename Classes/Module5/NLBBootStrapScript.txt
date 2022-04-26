@@ -1,3 +1,6 @@
+#Create each instance separately and copy the below bootstrap script.
+#You can follow the video
+
 NLB Boot Strap Script for Dog and Cat Food Ordering Server:
 
 open port 80 and 22 in SG
