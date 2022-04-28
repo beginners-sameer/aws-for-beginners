@@ -1,0 +1,10 @@
+#Create a bucket with open public access
+Upload index and error file by clicking Add files
+Upload img folder by clicking Add folder
+Enable static website hosting
+Try to access the static website url - it will be access denied
+
+
+#add the bucket policy to the same bucket. 
+Copy the bucket_policy file content 
+Replace the arn properly

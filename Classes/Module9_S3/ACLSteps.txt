@@ -1,0 +1,15 @@
+#Create a bucket with ACL enabled this time
+Make the Object Ownership as Bucket Owner preferred
+Enable Block all public access
+
+Now in the bucket dashboard for this bucket, it would say "Buckets and objects not public"
+
+Upload an image with default object permissions
+try to access the object url - access denied
+
+Open the public access from the bucket 
+Try to access the object turl - access denied
+
+Goto the object and edit the ACL and give everyone public access for Read
+Now try to access the url - it should work
+

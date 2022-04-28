@@ -1,0 +1,24 @@
+#Creating a bucket
+Bucket name
+aws region
+object ownership : Keeping this as ACL disabled
+Enable Block all public access
+Create Bucket
+Now the in the buckets dashboard, it would say Buckets and Objects not public
+
+#Modification
+Now all the public access on the same bucket and verify the bucket dashboard.
+Now it would says "Objects can be public"
+
+#Upload an object as an image.
+don't change any object permissions
+Verify whether it's opening with the object url
+It would says Access Denied
+
+And we can't edit the object permissions ACL as we already made it disabled when we created the bucket in the first step.
+
+#edit the bucket policy permissions
+and try to access the object url now
+
+
+
