@@ -1,0 +1,12 @@
+Replication Steps:
+
+1. Create a source bucket with open to public and enable static website hosting
+2. Create a destination bucket with open to public and enable static website hosting
+3. Create bucket policies on both source and destination bucket
+4. Go to source bucket Management tab and create a replication rule -> Give the destination folder
+4. Upload the files which are under the replication folder -> website folder
+5. Try to hit the static website endpoint url for source bucket. You should get the website page.
+6. Try to hig the static website endpoint url for destination bucket. You should get the same website page as it was replicated even though we never added any files in destination bucket manually.
+
+7. Now go to source bucket and try to upload files from replication folder -> website2 folder - you should get the new website images, the same would be replicated in destination static website endpoint url as well // usually it take 2 mins for the replication.
+
