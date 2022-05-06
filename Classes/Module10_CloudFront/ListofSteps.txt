@@ -1,0 +1,120 @@
+Create an S3 bucket with "Static Website Hosting" enabled
+Make sure it's open to Public so everyone can access
+Add the bucket policy for only "GetObject"
+Upload index.html, error.html and img/ folder
+
+____________________________________________
+
+Now try to access s3 static website endpoint - which is not secured.. http
+Now try to access index.html url directly from the file - which is secured.. https
+
+___________________________________________
+
+Create CloudFront Distribution
+click on Create
+Origin domain  -  Look for the s3 bucket which you have created
+Name - would automatically come up
+S3 bucket access - Don't use OAI
+Keep all other things default except the below field
+Default root object - optional   -   type "index.html"
+Click Create Distribution
+
+# it would take 15 mins maximum to create
+____________________________________________
+
+After it gets created, look for this field
+Distribution domain name  :  this will have the entry like this as example
+https://d33qh73xo3u7w7.cloudfront.net      - this is your Cloudfront distribution domain name
+
+Note the https entry // so the cloudfront default gives the https and it's secured.
+even though the s3 endpoint has http only there.
+
+If you remove https and just type https://d33qh73xo3u7w7.cloudfront.net  this will also work.
+Because while creating the distribution we have chosen both http and https should accept
+
+_____________________________________________
+
+How to Invalidate:
+
+1. Upload the new file "AMG" which is in this location aws-for-beginners\Classes\Module10_CloudFront into the S3 bucket under img/ folder   // so this will replace old AMG car image
+2. Now try to access :
+ 	s3 endpoint url and verify whether the first image changed or not ?
+	distribution domain and see whether it has changed the first image or not ?  If it's not changed means it's in cache and default TTL is 24 hrs as per the policy
+3. How to get the new AMG image in the distribution domain url also.
+4. Click on Invalidations tab
+5. Create Invalidation and in the Add Object paths type   /*   so it will invalidate all the objects
+6. this will take max 4-5 mins
+7. Now try to refresh the distribution domain url - you should get the updated AMG image.
+
+_____________________________________________
+
+How to add custom domain url:
+
+1. Edit the cloudfront distribution - Under General - Settings - Edit
+2. Under "Alternate domain name (CNAME) - optional"  - Click Add item
+3. If you have your own domain purchased like "www.awsbeginners.link" then you can give like this
+   "superengines.awsbeginners.link"    
+4. Under  - > Custom SSL certificate - optional  - Request Certificate / else if you already have the drop down with the certificate - please choose the one.
+5. After choosing the existing certificate from ACM , leave other options default and click save.
+6. It will deploy and will take couple of minutes
+
+In the meantime, 
+
+Open Route53 -> Click Hosted Zones -> Under awsbeginners.link -> Create record - Choose Wizard -> Choose Simple Routing -> Define Simple Record -> 
+Under subdomain, give the same name which you gave above in step 3 "superengines"
+superengines
+
+Recordtype -> leave it as default which is "A- Route Traffic to an IPV4 address"
+Choose Endpoint -> Alias to CloudFront Distribution
+Seach for the cloudfront distribution which you have created.
+Click on Define Simple Record
+Click on Create Records
+
+_______________
+
+Try to browse https://superengines.awsbeginners.link	  it should work
+Also it should work with http://superengines.awsbeginners.link	
+This is because we have chosen http & https as default behaviour
+
+Now try to edit the behaviour to only to https and try to access
+https://superengines.awsbeginners.link  it should work
+http://superengines.awsbeginners.link  this should give an error
+
+Now try to edit the behaviour to redirect from http to https
+Now try to access http://superengines.awsbeginners.link  it should automatically redirect to https://superengines.awsbeginners.link
+
+_______________
+
+How to enable OAI?
+1. Click on the distribution
+2. Click on Origins
+3. Choose the origin name and click edit
+4. Under S3 bucket access
+5. Choose "Yes use OAI"
+6. Click Create New OAI
+7. Choose Yes, update the bucket policy
+8. Click Save changes
+
+Now try to access s3 website endpoint url, s3 object url - see what reponse you get
+
+Goto s3 bucket policy
+and remove the statement which has allow all public access
+
+Now try to access s3 website endpoint url, s3 object url - see what response you get
+
+Now try to access distribution domain url 
+
+________________
+
+Explain about lambda@edge
+
+
+
+
+
+
+
+
+
+
+
