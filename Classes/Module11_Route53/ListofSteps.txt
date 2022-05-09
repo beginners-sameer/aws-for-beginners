@@ -1,0 +1,69 @@
+1. Open the one-click deployment
+2. Assign the elastic ip to the running instance
+3. Create a bucket called "www.sameertheawsguy.com"  - us-east-1 region
+4. Uncheck "public access"  means open to public
+5. Upload these 2 files which is under folder "Module11_Route53\r53_zones_and_failover\02_a4lfailover"
+6. Enable Static WebSite Hosting on this bucket
+7. Update the bucket policy which is assigned in the folder. Make sure to replace the ARN with your bucket ARN.
+
+__ now we have setup our primary endpoint as our ec2 instance using one click deployment and failover endpoint as our s3 bucket__
+
+1. Go to Route53 services -> Health Check -> Click Create Health Check -> Give some name for the health check like "A4L HealthCheck"
+2. What to monitor -> Endpoint
+3. Specifiy endpoint by -> IP address
+4. Protocol -> HTTP
+5. Get the Elastic IP of the ec2 instance and put it in here
+6. path -> index.html
+7. Advanced Configuration -> Request interval - 10 secs
+8. Click Next
+9. Dont' set any alarm
+10.click next
+11. it will be in unavailable status as it's verifying the initial health check
+12. In the meantime, select the particular healthcheck which you have created -> select the down tab called "Health checkers"
+13. so you could see that already our primary endpoint is getting passed from all over the region
+14. After 2-5 mins, the healthcheck for the primary endpoint will be GREEN
+
+________________________________________________
+
+Now we are going to create Primary Failover record in our Hosted Zone
+1.Click on Hosted Zones
+2.Choose your domain name "sameertheawsguy.com"
+3.Create record
+4.Choose Failover
+5.subdomain - www
+6.TTL - 1 min
+7.Leave the Record type as A
+8.Define Failover record
+9. Route Traffic to -> Choose IP address or another value -> put the public/elastic ip of the instance
+10. Failover record type as "Primary"
+11. Healthcheckid - choose the recent one which you have created
+12. RecordID should be unique among the records. So give "EC2"
+13. click Define Failover Record
+
+______________________________________________________
+
+Now we are going to create Secondary Failover record in our Hosted Zone
+1. Click on Define Failover Record
+2. Route Traffic to -> Alias to s3 website endpoint -> choose the righ region of the bucket -> choose the right bucket
+3. Failover Record type -> secondary
+4. Don't choose any health check also switch off the "evaluate target health"
+5. Record ID "s3"
+6. Click on Create Records
+
+
+_______________________________________________________
+
+Now try to explore http://www.sameertheawsguy.com -> you will get a page from ec2 instance from this location /var/www/html/index.html
+
+Now we will simulate the failover by stopping the ec2 instance.
+Go to Route53 page and Choose the recently created HealthCheck -> Click Health Checkers tab - you would see lot of failure connections and also it will become red.
+
+After few minutes you will get the different page.
+Now we will start the instance and verify that your health check will be up and the website will be up and running.
+This would take couple of minutes
+
+
+
+
+
+
