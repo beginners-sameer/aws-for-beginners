@@ -1,6 +1,7 @@
-1. Open the one-click deployment
+1. Launch an ec2 instance with http and ssh open with apache installed
+   Open WinScp and transfer two files from Module11_Route53\r53_zones_and_failover\01_awswebsite
 2. Assign the elastic ip to the running instance
-3. Create a bucket called "www.sameertheawsguy.com"  - us-east-1 region
+3. Create a bucket called "www.awsbeginners.link"  - us-east-1 region
 4. Uncheck "public access"  means open to public
 5. Upload these 2 files which is under folder "Module11_Route53\r53_zones_and_failover\02_a4lfailover"
 6. Enable Static WebSite Hosting on this bucket
@@ -61,6 +62,8 @@ Go to Route53 page and Choose the recently created HealthCheck -> Click Health C
 After few minutes you will get the different page.
 Now we will start the instance and verify that your health check will be up and the website will be up and running.
 This would take couple of minutes
+
+_______________________
 
 
 
