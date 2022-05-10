@@ -65,6 +65,23 @@ This would take couple of minutes
 
 _______________________
 
+How to create private hosted zone:
+1. Click on create Hosted Zone
+2. create some dummy website "myowndomain.com"
+3. Choose Private hosted zone -> Create Hosted Zone -> Choose US-EAST-1 as region -> choose the default VPC
+4. Click on the created zone and click on "Create Record"
+5. Choose Simple Routing
+6. Click Define Simple Record -> enter "www" in subdomain
+7. Record Type - A
+8. Value/Route traffic to -> IP Address
+9. Provide the ec2 instance ip address
+10. Set the TTL to 1 minute
+11. Click create record
+
+*** now we can ping this domain from the ec2 instance which is inside the VPC ***
+But we can't communicate to this dns from other VPC.
+
+If you ge the ping error, make sure ICMP protocol is opened in security group
 
 
 

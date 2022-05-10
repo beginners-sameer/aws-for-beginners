@@ -1,0 +1,74 @@
+# Setup 3 EC2 instances, each in different region
+For example:
+ec2-one  -> mumbai
+ec2-two  -> north viriginia
+ec2-three -> London
+
+Put the below user data boot strapping script in all the 3 instances:
+
+#! /bin/bash
+# Use this for your user data 
+# install httpd ( Linux 2 Version )
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+EC2_AVAIL_ZONE=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
+echo "<h1> Hello AWS Engineers from $(hostname -f) in AZ $EC2_AVAIL_ZONE </h1>" > /var/www/html/index.html
+
+Make sure ssh and http is allowed in security group
+________________________________
+
+List out the public instances of 3 instances like this :
+ec2-one  - 3.110.174.147
+ec2-two  - 3.87.133.233
+ec2-three- 18.169.240.161
+
+________________________________
+
+In Mumbai Region:
+
+Create an ALB with listener priority 80 with internet facing
+IP address - ipv4
+Choose the default vpc 
+Choose all the availability zones
+Choose the Security group which has 80 open from all sources
+
+Create the target group -> Targettype = instances -> Protocol =http-80 -> 
+Health check Protocol -> HTTP - / 
+
+Click Next and choose the avialable instances in mumbai region which will be only one
+Click on including as pending below
+Click "create target group"
+
+Go back to ALB page refreshed the TG drop down and select the newly created target group there.
+click on Create load Balancer
+
+Get the DNS name of the ALB:
+demo-alb-route53-803219870.ap-south-1.elb.amazonaws.com
+
+________________________________
+
+Now verify below ips/dns names are hitting in browser or not
+ec2-one  - 3.110.174.147  - mumbai
+ec2-two  - 3.87.133.233   - north virginia
+ec2-three- 18.169.240.161 - london
+demo-alb-route53-803219870.ap-south-1.elb.amazonaws.com
+
+________________________________
+
+How TTL works?
+
+Create a new record called "demo.awsbeginners.link"
+Choose Record type as 'A'
+gIVE THE PUBLIC EC2 INSTANCE IP OF mumbai in the value section
+TTL - 2 minutes
+Routing policy - simple
+
+Now try to run the dig command in cloudshell, you will see the TTL will be counting to 120 secs.
+
+In between try to change the A record type to london public ec2 instance ip and verify whether the demo.awsbeginners.link is opening the old mumbai ip or the london ip instance.
+
+
+
+

@@ -1,0 +1,47 @@
+1. create a record called "myapp.awsbeginners.link"
+2. Record type = CNAME
+3. Get the ALB dns name based on the previous demo on TTL
+   demo-alb-route53-803219870.ap-south-1.elb.amazonaws.com
+4. Routing = simple routing
+5. Create record
+
+This would take 10-15 mins to reflect on the browser
+____________________________
+
+1. create a record called "myalias.awsbeginners.link"
+2. Record tpe - A
+3. Route traffic to " toggle Alias button "
+4. Route traffic to "Alias to Application Load Balancer"
+5. Choose the ap-south-1 region
+5. choose the ALB
+6. Routing policy - simple routing
+7. Toggle "evaluate target health"
+8. Create Record
+Now visit http://myalias.awsbeginners.link  it should open
+
+_____________________________
+
+
+Now try to create a cname with only "awsbeginners.link"
+1.Record name - only awsbeginners.link
+2.Record type - CNAME
+3.Value - put the alb dns name 
+4. Leave the rest
+5. Create record - it won't allow. 
+
+Lesson is not possible to create a cname record with apex record.. apex means here "awsbeginners.link"
+
+Now try to do the same using Alias:
+1. Create a record
+2. Record name - only awsbeginners.link
+3. Record type - A
+4. Enable Alias
+5. Route traffic to "Alias to Application Load Balancer"
+6. Choose the ap-south-1 region
+7. 5. choose the ALB
+8. Routing policy - simple routing
+9. Toggle "evaluate target health"
+10. Create Record
+
+_____________________________
+

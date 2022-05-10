@@ -1,0 +1,15 @@
+#Creating our first record and analyzing with dig command
+
+1. click on create record under your domain
+2. Record Name - test.awsbeginners.link
+3. A Simple Record - put the instance ip
+4. Verify in browser "test.awsbeginners.link" - it should come up
+
+# we can try adding multiple ip addresses in each line
+
+1. Open CloudShell
+2. By default "nslookup" or "dig" command will not work
+3. run this command to install  dig and nslookup command "sudo yum install -y bind-utils"
+4. Try to run "nslookup test.awsbeginners.link" you will get the corresponding ip address of the domain
+5. Try to run "dig test.awsbeginners.link" -> see the ANSWER SECTION -> you will see the domain name // TTL / A record / IP address
+
