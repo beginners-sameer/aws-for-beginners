@@ -70,5 +70,5 @@ Now try to run the dig command in cloudshell, you will see the TTL will be count
 In between try to change the A record type to london public ec2 instance ip and verify whether the demo.awsbeginners.link is opening the old mumbai ip or the london ip instance.
 
 
-
+Note : Don't terminate any instances or ALB, because this is needed for next Part2 file
 
