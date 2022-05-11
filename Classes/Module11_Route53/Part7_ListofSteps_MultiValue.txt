@@ -1,0 +1,43 @@
+Goto your hosted zone. For ex : awsbeginners.link
+
+Note: Create 3 separate health cheecks for 3 ec2 instances
+
+
+Create Record
+Record name - multi.awsbeginners.link
+Record type - A
+Value - US instance ip
+TTL - 60 secs
+Routing Policy - Multivalue
+Health check - us-east-1  // if you have created 1 health check for this already then choose it for this instance else leave it as optional
+Record ID - US
+
+Create another record on the same page
+Record name - multi.awsbeginners.link
+Record type - A
+Value - London IP
+TTL - 60 secs
+Routing Policy - Multivalue
+Health check - London  // if you have created 1 health check for this already then choose it for this instance else leave it as optional
+Record ID - London
+
+Create another record on the same page
+Record name - multi.awsbeginners.link
+Record type - A
+Value - Mumbai IP
+TTL - 60 secs
+Routing Policy - Multivalue
+Health check - mumbai  // if you have created 1 health check for this already then choose it for this instance else leave it as optional
+Record ID - Mumbai
+
+__________________________________________
+
+Now go to cloudshell - and hit 
+dig multi.awsbeginners.link
+you should get 3 resources responses which is multi value
+
+Why we are getting 3 responses, because of the health check of the individual instances.
+If you invert one of the health check of instance and try to 
+dig multi.awsbeginners.link
+
+You will get only two instance.

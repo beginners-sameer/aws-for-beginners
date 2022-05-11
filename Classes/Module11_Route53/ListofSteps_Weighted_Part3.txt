@@ -1,0 +1,54 @@
+Steps to explain Weighted :
+
+Goto Hosted Zone of yours. For Ex: awsbeginners.link
+Create Record
+Recordname - weighted.awsbeginners.link
+Recordtype - A
+Value		- paste the public ip of one of the ealire instances from the previous lab
+TTL - 3 Secs
+Routing Policy - Weighted
+Weight - 10
+Record ID - give the name from which instance you have pasted. For ex "mumbai"
+No need of Health Checks
+
+Click on Add another Record on the same screen
+Recordname - weighted.awsbeginners.link
+Recordtype - A
+Value		- paste the different public ip of one of the ealire instances from the previous lab
+TTL - 3 Secs
+Routing Policy - Weighted
+Weight - 70
+Record ID - give the name from which instance you have pasted. For ex "US"
+No need of Health checks
+
+Click on Add another Record on the same screen
+Recordname - weighted.awsbeginners.link
+Recordtype - A
+Value		- paste the different public ip of one of the ealire instances from the previous lab
+TTL - 3 Secs
+Routing Policy - Weighted
+Weight - 20
+Record ID - give the name from which instance you have pasted. For ex "UK"
+
+
+Create Records
+
+------------------------------------------------------
+
+
+try to visit weighted.awsbeginners.link  =70% of the traffic will go the instances
+every 3 secs  it will try to refresh the server. since we are routing the 70% of the traffic to the same instance, once in a while you will get a different ip when you are refreshig.
+
+Try the dig command in cloudshell as well and verify
+
+dig weighted.awsbeginners.link
+
+
+_______________________________________________________
+
+
+
+
+
+
+

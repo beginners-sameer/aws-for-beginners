@@ -1,0 +1,3 @@
+Click on Traffic Policies
+Create a sample traffic policy
+and Choose the two regions for "GeoProximity"

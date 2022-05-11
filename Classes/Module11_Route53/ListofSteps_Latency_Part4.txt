@@ -1,0 +1,56 @@
+Latency based routing policy:
+
+go to your hosted zone. For ex : awsbeginners.link
+Create a record
+Record name - latency.awsbeginners.link
+
+ec2-one  -> mumbai
+ec2-two  -> north viriginia
+ec2-three -> London
+
+Value - you give far away instance ip from your current location. i am giving  ec2-two instance ip
+TTL - 300 secs
+Routing Policy - Latency
+Region - choose the instance region
+Record id - us-east-1 or any name which you identify as it's US
+
+On the same page, create another record
+Record name - latency.awsbeginners.link
+Value - london instance ip
+TTL - 300 secs
+Routing Policy - Latency
+Region - choose the instance region
+Record id - London
+
+
+On the same page, create another record
+Record name - latency.awsbeginners.link
+Value - mumbai instance ip
+TTL - 300 secs
+Routing Policy - Latency
+Region - choose the instance region
+Record id - mumbai
+
+Now you are physically located in india and if you try to hit
+latency.awsbeginners.link  - it will eventually go to mumbai instance
+You can verify with dig command in cloudshell that you always get this mumbai instance ip only
+
+If you connect to a vpn to different location UK.
+If you hit latency.awsbeginners.link - you will get london instance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

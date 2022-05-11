@@ -1,0 +1,37 @@
+Goto your hosted zone. For ex : awsbeginners.link
+
+Create Record
+Record Name - geo.awsbeginners.link
+Record type - A
+Value - given london ip
+Routing Policy - geolocation
+Location - Europe // what you are saying here is.. anyusers from Europe should go to london ip
+Record id - Europe
+
+Click Add another record on the same page
+Record Name - geo.awsbeginners.link
+Record type - A
+Value - given US ip
+Routing Policy - geolocation
+Location - United States // what you are saying here is.. anyusers from US should go to US ip
+Record id - US
+
+
+Click Add another record on the same page
+Record Name - geo.awsbeginners.link
+Record type - A
+Value - given Mumbai ip
+Routing Policy - geolocation
+Location - Default // any other than above two, they should come here
+Record id - Default
+
+Create Records
+
+Try to visit geo.awsbeginners.link  - it should default point to mumbai because i am from india
+
+Connect to vpn and connect to Europe or US and try to visit the url. it should point to different ip
+
+
+
+
+
