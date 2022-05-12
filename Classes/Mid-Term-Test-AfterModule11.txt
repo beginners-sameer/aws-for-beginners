@@ -1,0 +1,45 @@
+1. My Company has few private Web Servers on my Premises, Also I have shared some of my workload onto the Public Cloud. What kind of Setup or Architecture is this?
+
+2. I want to create the ec2 security group with this name "WebServer-SG" using AWS CLI? What is the command and do a demo on this
+
+3. I am running a Media Streaming company called "MovileFlix". Team has found out that Processing of a Video is interrupted in one of the EC2 instances which is running with M5.large. However the video processing have been resumed in another available instance.
+Perphaps, lot of videos needs to be processed and all in backlog and waiting for more instances. But you need new instances only until your backlog is reduced. What type of instances would you opt for ?
+
+4. Explain the difference between Stopping and Terminating and instance?
+
+5. My Business team has requested me to launch an instance to run on a single-tenant hardware, which value should I choose to set the instance's tenancy attribute?
+
+6. You have attached an Elastic IP address to an instance. You are getting charged every month on this // but one of your colleague has said " No charges for using Elastic IP " . Can you find out what you are doing wrong ?
+
+7. What is the difference between Spot vs On-Demand vs Reserved ?
+
+8. As an Architect, Do you use AMI and What is the use of it ?
+
+9. How do you choose Availability Zone and Regions ?  
+
+10. Should I use Elastic IP or Any LoadBalancers ? Which is best to choose?
+
+11. I have installed Apache in c5.xlarge machine and updated my website under /var/www/html/index.html , however next day after stopping and starting my website is down. What is the cause?
+
+12. My Colleague told me that when you setup a bucket for static website, you give the permission for the entire bucket policy rather using ACL ? Which option you prefer ?
+
+13. I am a CNN employee working from a small remote village working from NewZealand. I came to NewZealand for some reporting work and have to upload the images to my company website which is hosted from US. When i try to upload in a normal way of s3 upload, it takes long time as i have to upload videos. What is other option to upload it faster?
+
+14. Is it possible to change the private ip address of an instance ?
+
+15. I have hosted a dynamic and static website using EC2 and S3. I have put Cloudfront before the ec2 and s3. My Content is not present in EDGE location. When user hits my website, what would they get ? Will get 502 error or 404 not found ?
+
+16. What is the difference between scalability and elasticity ?
+
+17. My Application is using Application Load Balancer with Auto-Scaling Group. My Intances are running with r5.2xlarge. My Production team has said, we have to change the instance type for all the running instances ? How can you achieve this ?
+
+18. I have setup a content management system application on one ec2 instance. It is approaching 100% cpu utilization. Suggest me how can i reduce this ?
+
+19. When can i Use classic load balancer and application load balancer ?
+
+20. ALB detected that one of the instances failed the health check ? what will happen to this failed health check instances ?
+
+21. What are Lifecycle Hooks ? Where will we use it ?
+
+22. Your IT director has asked you to create a mirror image of your current production environment which is running in us-east-1  to us-west-1. It's part of disaster recovery. Which AWS service you don't need to recreate it ?
+
