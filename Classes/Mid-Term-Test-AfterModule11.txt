@@ -86,3 +86,63 @@ C) Deploy Spot Instances during periods of high demand.
 D) Increase the instance size of the instances in the Amazon EC2 reservation to support the increased
 workload.
 
+27. Following are security group inbound rules:
+
+http/80, source = 10.10.1.148/32
+http/80, source = 10.10.1.0/28
+All TCP, source = 10.10.1.148/32
+SSH/22,  source = 10.10.1.0/28
+custom udp/3000, source = 10.10.1.148/32
+
+All rules are correct or anything is wrong ?
+
+28. Which of the following are s3 bucket properties?
+Metadata
+Storage Class
+Object Level Logging
+Server Access Logging
+
+29. You have created an s3 bucket in us-east-1 region with default configuration. You have uploaded some documents and wanted to share it with a group of users in your organization. What will you do ?
+
+a. by default, s3 bucket has public access enabled, share the document's url with users via email
+b. generate pre-signed url with an expiry date and share the url 
+c. create one iam user per person, add them to an iam group, attach managed poliy for the group with getobject action on your s3 bucket. Users can download documents from aws console
+d. create one iam user per person, attach managed policy for each users with getobject action on your s3 bucket. users can login to aws console and download documents.
+
+30. U have an app running on ec2, when it tried to upload a 7 gb file to s3, the operation got failed. Select the reason and solution for this problem.
+
+31. You create a bucket named "mybucket" in US west region. What are the valid URLs for accessing the bucket ? 
+a. https://s3.amazonaws.com/mybucket
+b. https://s3.us-west-1.amazonaws.com/mybucket
+c. https://s3-us-west-1.amazonaws.com/mybucket
+d. https://s3.mybucket.us-west-1.amazonaws.com
+e. https://mybucket.s3-us-west-1.amazonaws.com
+
+32. Lot of application logs are written on an s3 bucket regularly. These are the only copies and are not replicated anywhere. The log files range between 10MB to 500MB in size and are not required frequently. To troubleshoot application issues, logs are required, and this happens once in a while. You are asked to make 60 days log available immedidately when required, the record older than 60 days should be kept but is required only for reference, not on a regular basis. What solution do you have to keep the billing cost minimum ?
+a. Set object storage class to onezone-IA. Use LifeCycle Management to move data from onezone-ia to glacier after 60 days.
+b. Set storage class to standard. Use life cycle management to move data from standard to standard-ia after 30 days and move data from standrard-ia to glacier after 30 days.
+c. set object storage class to standard. move data from standard to standard-ia after 60 days
+d. set object storage class to standard-ia, use lifecycle managmene to move data from standard-ia to glacier after 60 days.
+
+
+33. You created a bucket 25 days ago, on the day you created this bucket; you uploaded a 1 GB file. On day 15, you uploaded 5gb data to the same bucket. you also enabled versioning on this bucket. how will billing be applied to this scenario?
+a. charges 5 gb for 25 days
+b. charges 1 gb for 14 days and 5 gb for 11 days
+c. charges 1 gb for 25 days 5 gb for 11 days
+d. charges 6 gb for 25 days
+
+
+34. You have one versioning enabled s3 bucket. You accidentally deleted an object that has 3 versions. what will you do to restore the deleted object ?
+a. in version-enabled bucket, DELETE request only deletes the latest version.
+b. versioning does not support the restoration of deleted objects
+c. delete the delete marker on the object
+d. select the deleted object and click restore option in more menu
+
+35. An s3 bucket in us-east-1 is used to store video files for a video sharing website that is running on ec2 inside the US. The owners have decided to expand the website all over the world. After the expansion, customers from outside the US region started complaining that the upload, download and overall access to the web are very slow. You are hired to resolve this issue; what solution do you have ?
+
+a. Change your app design to provision higher memory configuration ec2 instances and process s3 requests through ec2
+b. enable transfer acceleration feature of s3 that improves upload and download speed by using edge locations
+c. use vpc endpoints in other regions to improve s3 uploads and downloads
+d. use cloudfront for improving the performance by caching static files on the website
+
+
