@@ -43,3 +43,46 @@ Perphaps, lot of videos needs to be processed and all in backlog and waiting for
 
 22. Your IT director has asked you to create a mirror image of your current production environment which is running in us-east-1  to us-west-1. It's part of disaster recovery. Which AWS service you don't need to recreate it ?
 
+23. A customer relationship management (CRM) application runs on Amazon EC2 instances in multiple
+Availability Zones behind an Application Load Balancer
+If one of these instances fails, what occurs?
+A) The load balancer will stop sending requests to the failed instance.
+B) The load balancer will terminate the failed instance.
+C) The load balancer will automatically replace the failed instance.
+D) The load balancer will return 504 Gateway Timeout errors until the instance is replaced.
+
+24. A solutions architect wants to design a solution to save costs for Amazon EC2 instances that do not
+need to run during a 2-week company shutdown. The applications running on the instances store data in
+instance memory (RAM) that must be present when the instances resume operation.
+Which approach should the solutions architect recommend to shut down and resume the instances?
+A) Modify the application to store the data on instance store volumes. Reattach the volumes while restarting
+them.
+B) Snapshot the instances before stopping them. Restore the snapshot after restarting the instances.
+C) Run the applications on instances enabled for hibernation. Hibernate the instances before the shutdown.
+D) Note the Availability Zone for each instance before stopping it. Restart the instances in the same
+Availability Zones after the shutdown.
+
+25.  A company needs to maintain access logs for a minimum of 5 years due to regulatory requirements.
+The data is rarely accessed once stored, but must be accessible with one day’s notice if it is needed.
+What is the MOST cost-effective data storage solution that meets these requirements?
+A) Store the data in Amazon S3 Glacier Deep Archive storage and delete the objects after 5 years using a
+lifecycle rule.
+B) Store the data in Amazon S3 Standard storage and transition to Amazon S3 Glacier after 30 days using a
+lifecycle rule.
+C) Store the data in logs using Amazon CloudWatch Logs and set the retention period to 5 years.
+D) Store the data in Amazon S3 Standard-Infrequent  Access (S3 Standard-IA) storage and delete the
+objects after 5 years using a lifecycle rule.
+
+26. A company uses Reserved Instances to run its data-processing workload. The nightly job typically
+takes 7 hours to run and must finish within a 10-hour time window. The company anticipates temporary
+increases in demand at the end of each month that will cause the job to run over the time limit with the
+capacity of the current resources. Once started, the processing job cannot be interrupted before
+completion. The company wants to implement a solution that would allow it to provide increased capacity
+as cost-effectively as possible.
+What should a solutions architect do to accomplish this?
+A) Deploy On-Demand Instances during periods of high demand.
+B) Create a second Amazon EC2 reservation for additional instances.
+C) Deploy Spot Instances during periods of high demand.
+D) Increase the instance size of the instances in the Amazon EC2 reservation to support the increased
+workload.
+
