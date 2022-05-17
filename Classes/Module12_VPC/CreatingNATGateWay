@@ -1,0 +1,22 @@
+Create a NAT Gateway under VPC section
+put the nat gateway under subnet "Public2B"
+give the name : my-security-ngw
+Allocate the Elastic IP
+Connectivity Type should be public.
+
+Go to Private RT "Security-PrivateRT"
+Edit the Routes
+add the NAT gateway.
+
+Now try to login to bastion host and then ssh to any of the private instances using " ssh ec2-user@privatipoftheinstances -i security.pem "  then try to run
+sudo yum update -y , see whether it works or not
+
+Now you have installed apache on both the private instances.
+
+How can you access the website publicly?
+
+Create a Classic LB with new SG created with only 80 ports getting allowed.
+Choose both public subnets
+Choose then private ec2 instances
+HTTP PORT 80 should be in the listener mode
+Health check - TCP

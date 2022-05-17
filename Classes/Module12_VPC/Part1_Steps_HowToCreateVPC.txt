@@ -1,0 +1,79 @@
+
+
+vpc ipv4 cidr 10.0.0.0/16
+Tenancy - Default
+
+create igw
+Associate this igw to the right VPC
+
+there would be default rt
+create one rt as public
+create one rt as private
+
+go to public rt
+edit
+add the route 0.0.0.0/0  target=igw
+
+subnets:
+create 1 subnet
+choose the right vpc
+us-east-1a az
+cidr block 10.0.1.0/24
+
+create 2nd subnet
+us-east-1b az
+10.0.2.0/24
+
+create 3rd subnet
+us-east-1a az
+10.0.3.0/24
+
+create 4th subnet
+us-east-1b az
+10.0.4.0/24
+
+None of the subnets are associated with public or private RT
+
+go to public RT and associate the public labelles subnets
+
+go to private RT and associate the private labelled subnets
+
+so we have created 4 subnets:
+
+now we are going to create 2 NACLS and 2 SGs
+
+Create NACL for public subnets
+choose right VPC
+
+create NACL for private subnets
+choose right VPC
+
+choose the 1st NACL
+everything will be denied by default
+edit inbound
+rull 100 ssh all sources 
+rule 110 http all sources
+
+edit outbound
+rule 100 ssh all sources
+rule 110 http all sources
+
+or All TCP as a single rule
+
+or allow
+ssh
+http
+custom tcp rule - 1024-65536
+
+Note: ssh always travel 22 during inbound rules.. but for outgoing it may travel of any ports between 1024 - 65536.. we call those as ephemeral ports
+
+So we have to modify the outbound rules to allow all TCP
+
+
+
+
+
+
+
+
+

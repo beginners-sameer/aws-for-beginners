@@ -1,0 +1,33 @@
+15.75.0.0/24  vpc ip
+
+NACL will be created
+
+No Subnets will not be created
+No IGW will not be created
+
+As soon as you delete the vpc, NACL will also be deleted
+
+________________________________________________________
+
+myproject-vpc  -   10.0.0.0/16
+
+myproject-subnet-public1-us-east-1a  -  10.0.0.0/20
+myproject-subnet-public2-us-east-1b  -  10.0.16.0/20
+myproject-subnet-public3-us-east-1c  -  10.0.32.0/20
+
+myproject-subnet-private1-us-east-1a -  10.0.128.0/20
+myproject-subnet-private2-us-east-1b -  10.0.144.0/20
+myproject-subnet-private3-us-east-1c -  10.0.160.0/20
+
+
+RouteTable:
+myproject-rtb-private1-us-east-1a  associated with myproject-subnet-private1-us-east-1a
+myproject-rtb-private2-us-east-1b  associated with myproject-subnet-private2-us-east-1b
+myproject-rtb-private3-us-east-1c  associated with myproject-subnet-private3-us-east-1c
+
+myproject-rtb-public  associated with myproject-subnet-public2-us-east-1b, myproject-subnet-public3-us-east-1c, myproject-subnet-public1-us-east-1a
+
+IGW is also created
+
+NACL is also created
+

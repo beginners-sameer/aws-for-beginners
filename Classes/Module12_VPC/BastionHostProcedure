@@ -1,0 +1,72 @@
+Create a New VPC: my-security-vpc
+Create a New IGW: my-security-igw
+Attach the IGW to VPC
+
+Create 4 Subnets ( 2 public and 2 private ) i.e., 1public + 1private in same AZ,  1public + 1private in same AZ
+
+Create the 1st subnet, make sure it's in the newly created VPC
+Name : Public1A
+AZ : us-east-1a
+CIDR Range : 10.0.1.0/24
+
+Create the 2nd subnet, make sure it's in the newly created VPC
+Name : Public2B
+AZ : us-east-1b
+CIDR Range : 10.0.2.0/24
+
+Create the 3rd subnet, make sure it's in the newly created VPC
+Name : Private3A
+AZ : us-east-1a
+CIDR Range : 10.0.3.0/24
+
+Create the 4th subnet, make sure it's in the newly created VPC
+Name : Private4B
+AZ : us-east-1b
+CIDR Range : 10.0.4.0/24
+
+Click on Create Subnet button
+
+Verify the NACL and understand it
+
+Create 2 RT in total
+Create 1st RT with the name : Security-PublicRT by choosing the right VPC
+Click on Routes, add it to the IGW so we won't forget later.
+Associate the Subnets as well, make sure to associate only Public2B and Public1A subnets
+
+Create 2nd RT with the name : Security-PrivateRT by choosing the right VPC
+Click on Routes and verify whether it's local
+Associate the subnets as well, make sure to associate only Private3A and Private4B subnets
+
+Now our VPC setup is done.
+
+Go to EC2 SECTION:
+Launch 1st ec2 instance by choosing correct vpc and subnet "Private3A"
+Create a new SG "Private-EC2" by allowing SSH & HTTP from everywhere.
+Create a New Key Pair with the name "security" and download it by choosing RSA option
+Name of the instance : Private3AInstance
+
+Launch 2nd ec2 instance by choosing correct vpc and subnet "Private4B"
+Choose the security group which was created earlier "Private-EC2"
+Choose the existing key pair "security" and launch the instances.
+Name of the instance : Private4BInstance
+
+Please analyze both the instances that they don't have public ip to connect through. EC2-instance connect will also not work.
+
+Hence we are introducing a concept called "Bastion Host"
+
+Launch 3rd ec2 instance by choosing correct vpc and subnet "Public1A" and Enable Auto-Assign Public IP
+Tag : Name - Bastion Host
+Create a new SG : Bastion-SG and allow only SSH from anywhere
+Choose the existing key pair "security" and launch the instances.
+
+Now login to bastion host ec2 machine using ec2 instance connect.
+You need to create a same key pair file name called "security.pem" in the home folder 
+nano security.pem
+make sure run this command "chmod 400 security.pem"
+Copy the security.pem file which you have already downloaded from your windows laptop to bastion host machine and then save it.
+
+Now try to access the private instance ips using the command " ssh ec2-user@privatipoftheinstance -i security.pem
+It should connect to the private instances using bastion host.
+
+
+
