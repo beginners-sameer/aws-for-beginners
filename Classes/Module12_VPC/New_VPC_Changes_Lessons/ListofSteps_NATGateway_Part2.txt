@@ -1,0 +1,27 @@
+#Creating NAT Gateway
+click create NAT Gateway
+public subnet A
+connectivity type - public
+allocate an elastic ip
+create NAT gateway
+
+_____________________________
+
+Modified the route table of private subnet A
+by adding 
+0.0.0.0  to target as NAT gateway
+
+____________________________
+
+After this login to bastion host first
+then do ssh into private ec2 instance
+then try to perform
+
+ping google.com
+curl https://example.com 
+curl https://google.com
+
+so this shows that your private ec2 instance can connect to internet and download required components using NAT Gateway
+
+
+

@@ -1,0 +1,6 @@
+1. Connect to bastion host and from there connect to private ec2 instance
+	Try to access   "aws s3 ls"
+2. Modify IAM role for your private ec2 instance and created a new s3 role and provide it on it
+3. Create Endpoints for S3 and apply that in private route tables
+4. now try to access "aws s3 ls"
+

@@ -1,0 +1,14 @@
+Click on Reachability Analyzer
+Create and analyze path
+Give some name
+source - instance - bastion host
+destination - instance - choose private ec2 instance
+destination port - try 443
+Protocol - TCP
+Create
+
+You will see the security group hasn't allowed 443, hence you got the failed result.
+
+Try to add 443 into the same security group and re-run the analyses.
+
+and verify the results now.

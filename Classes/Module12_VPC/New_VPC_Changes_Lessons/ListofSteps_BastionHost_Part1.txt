@@ -1,0 +1,95 @@
+#Creating one VPC with 
+
+VPC cidr range - 10.0.0.0/16
+No IPv6 CIDR block
+Tenancy - default
+Tags - projectvpc
+Make sure you create 1 public subnet and 1 private subnet
+
+PublicSubnetA - us-east-1a - 10.0.0.0/24    // you can leave it as default else customize like this
+PublicSubnetB - us-east-1b - 10.0.1.0/24
+
+PrivateSubnetA - us-east-1b - 10.0.16.0/20
+PrivateSubnetB - us-east-1b - 10.0.32.0/20
+
+_______________________________________________
+
+Launch EC2 instance - t2.micro - choose the new VPC - subnet - PublicSubnetA 
+Auto Assign Public ip - Enable
+Create a new SG with 22 port open from anywhere
+Proceed without a keypair
+Tat it as "BastionHost" or "JumpServer"
+
+Create a new Keypair in .pem format
+
+Launch ec2 instance
+t2.micro
+private-subnet-1a
+create SG - choose the source as bastion host sg 
+tag it as private instance
+
+______________________________________________
+
+
+Connect to Bastion Host ec2 machine
+from the terminal, need to connect to private ip of the private ec2 instance.
+
+ssh ec2-user@privateipoftheec2instance -i keypairnamehere
+
+ ssh ec2-user@10.0.128.31
+The authenticity of host '10.0.128.31 (10.0.128.31)' can't be established.
+ECDSA key fingerprint is SHA256:CSogjIV9KktSQgHBAqjCS0XdhirsBX4WFGJWS1wI+4w.
+ECDSA key fingerprint is MD5:0b:d2:30:2f:76:7f:ec:ec:ae:66:63:e9:b3:d0:57:13.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.0.128.31' (ECDSA) to the list of known hosts.
+Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+
+you will get the above error as we need to mention the keypair name
+
+We need to create the keypair file name with the same content which we have downloaded earlier
+
+vi keypairname
+and copy the content of the original file into here
+
+Try to execute the below command:
+[ec2-user@ip-10-0-15-227 ~]$ ssh ec2-user@10.0.128.31 -i my-project-kp
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0664 for 'my-project-kp' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "my-project-kp": bad permissions
+Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+
+You would get permission denied.
+Please change the permission of the file to 400
+
+chmod 400 kepairfilename
+
+[ec2-user@ip-10-0-15-227 ~]$ sudo chmod 400 my-project-kp
+[ec2-user@ip-10-0-15-227 ~]$ ssh ec2-user@10.0.128.31 -i my-project-kp
+
+       __|  __|_  )
+       _|  (     /   Amazon Linux 2 AMI
+      ___|\___|___|
+
+https://aws.amazon.com/amazon-linux-2/
+[ec2-user@ip-10-0-128-31 ~]$ 
+
+
+Now you have connected to the private ec2 instance from the jumpbox.
+
+Note: Don't delete the instances or anything. It's required for our next topic
+
+Now try to ping google.com from the private ec2 instance.. it will not allow. 
+In the next topic, we will cover this by introducing NAT Gateway Concept
+
+
+
+
+
+
+
+
+
