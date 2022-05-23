@@ -1,0 +1,46 @@
+We are going to peer the new vpc with the default vpc
+
+edit the tag name from empty to "default vpc" in the default VPC
+
+Launch an ec2 instance first in default vpc with ssh port open by creating new sg without any keypair
+
+Now take the bastion host instance private ip and the newly launched instance above in default vpc and compare the private ips.
+It's both in different network.
+
+Bastion host - 10.0.15.227
+new ec2 in default vpc - 172.31.25.131
+
+Connect to Bastion host 
+install apache
+creat some sample index.html
+start the apache
+run the below command
+curl privateipofthisinstance:80    // you should get some response
+
+
+Now connect to ec2instance from the default vpc
+try to run the same curl command from here
+curl privateipofbastionhostinstance:80   // it will nto work
+
+because both are in different network
+
+________________
+
+click Peering connection
+Select the Requestor VPC as "new vpc created"
+Choose My Account
+Choose this region
+Selection Accepter as "default VPC"
+
+Accept the request by clickin on Actions
+
+
+Now modify the route tables from bastion host side and also from ec2instance default vpc side
+
+find out the default routetable for default vpc and edit it
+edit the routes
+add the route
+give the cidr range of bastion host vpc "10.0.0.0/16" and choose the peering connection.
+
+find out the public rt of ec2isntance of default vpc and add the below route
+give the cidr range of default vpc "

@@ -10,6 +10,7 @@ PublicSubnetA - us-east-1a - 10.0.0.0/24    // you can leave it as default else 
 PublicSubnetB - us-east-1b - 10.0.1.0/24
 
 PrivateSubnetA - us-east-1b - 10.0.16.0/20
+
 PrivateSubnetB - us-east-1b - 10.0.32.0/20
 
 _______________________________________________

@@ -1,0 +1,42 @@
+#launching the stack
+https://tinyurl.com/4smw29pt
+
+#above stack will launch with t2.micro, try to update the stack by changing to t2.small or t2.medium and see how the instances behaves
+
+#login to A4L-Wordpress
+#delete the old hello world post and add the new
+http://yourpublicip/wp-admin/
+goto all post, select hello world and move it to trash
+add New, add the blog images by clicking add gallery and publish it
+Now View the post
+Now the uploaded gallery has been updated in the DB.
+
+#connect to a4lwordpress machine
+
+
+# Backup of Source Database
+mysqldump -u root -p a4lwordpress > a4lwordpress.sql
+
+
+# Restore to Destination Database
+mysql -h privateipof_a4l-mariadb -u a4lwordpress -p a4lwordpress < a4lwordpress.sql 
+mysql -h 10.16.48.168 -u a4lwordpress -p a4lwordpress < a4lwordpress.sql 
+
+# Change WP Config
+cd /var/www/html
+nano wp-config.php
+
+replace
+/** MySQL hostname */
+define('DB_HOST', 'localhost');
+
+with 
+/** MySQL hostname */
+define('DB_HOST', 'REPLACEME_WITH_MARIADB_PRIVATEIP'); 
+
+sudo service mariadb stop
+
+
+
+
+

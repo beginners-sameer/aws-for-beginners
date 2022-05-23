@@ -1,0 +1,69 @@
+tinyurl:
+https://tinyurl.com/43ycep3z
+
+#Login to a4lwordpress machine and delete the hello world post and uploade those 4 images
+
+#Go to RDS, Create a SubnetGroup
+Name: a4lsngroup
+Choose the right VPC
+choose az - 1a,1b,1c
+Choose the subnets based on the subnets
+
+#Create Database
+Standard Create
+MySql
+Version - 5.7.31
+
+DBinstance identifier - a4lwordpress    4n1m4ls4L1f3	
+
+Master Username - a4lwordpress
+
+password - copy from the cloudformation parameter 
+
+DB instance class - db.t2.micro
+
+Storage - make it default
+
+Choose the right vpc 
+
+Public access - No
+
+Create a New Security Group and give the name "A4LVPC-RDS-SG"
+
+AZ - No Preference
+
+2nd Additional Configuration:
+Initial Database name - a4lwordpress
+
+Create Database button.
+
+# Please verify the RDS Security Group
+
+
+# Backup of Source Database
+mysqldump -h 10.16.48.246 -u a4lwordpress -p a4lwordpress > a4lwordpress.sql
+
+
+# Restore to Destination Database
+mysql -h a4lwordpress.c5kfdscptc5y.us-east-1.rds.amazonaws.com -u a4lwordpress -p a4lwordpress < a4lwordpress.sql 
+
+# Change WP Config
+cd /var/www/html
+sudo nano wp-config.php
+
+a4lwordpress.c5kfdscptc5y.us-east-1.rds.amazonaws.com
+
+
+replace
+/** MySQL hostname */
+define('DB_HOST', 'PRIVATEIPOFMARIADBINSTANCE');
+
+with 
+/** MySQL hostname */
+define('DB_HOST', 'REPLACEME_WITH_RDSINSTANCEENDPOINTADDRESS'); 
+
+Try to access the public ip of the web instance -
+
+If no pages coming up 
+
+try to verify the inbound rules of the RDS security group. "A4LVPC-RDS-SG" and allow only from the referenced security group of the EC2 instance.

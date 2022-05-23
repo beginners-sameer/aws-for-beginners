@@ -1,0 +1,74 @@
+# Demo on MultiAZ & Using a snapshot to recover from data corruption
+
+#Tiny url
+https://tinyurl.com/yckw67ut
+
+# Connect to EC2 instance "A4L-Wordpress"
+Configure the wordpress by entering admin as user id and password from CF parameter.
+Copy the public ip of the instance and open up in the Google chrome.
+Delete the "hello-world" post and upload those 4 images of cats.
+
+Note: you can verify the wp-config.php to find the out the DB_HOST that it's really connecting to RDS or not
+
+# Now Let's take the snapshot of the RDS instance
+Select the Database
+Click Actions
+Take Snapshot
+Snapshot Name :   a4lwordpress-with-cat-post-mysql-5-7
+click Take Snapshot
+
+#How to Enable Multi-AZ RDS mode
+Make sure to selecte the DB instance and click on Modify
+Choose Multi-AZ and rest all keep it defaults and click Next
+Choose "Apply Immediately"
+After it became available, please click the database instance, Click Configuration
+You will see the Multi-AZ as Yes and Secondary Zone would be displaying.
+
+#How to Simulate the Failover of Multi-AZ
+Select the DB instance, click Actions
+Click Reboot and select "Reboot with Failover?" and Click Confirm
+Now verify the wordpress page
+and in the aws console, click the DB and you can the AZ column, it has taken the secondary AZ name.
+
+#How to restore RDS if we have Data Corruption
+Go back to wordpress site and edit the title with some wrong information and publish
+Now go to RDS services, Click Snapshots, you will see the earlier snapshot which we created
+Select it and Click on Action, Click Restore Snapshot
+Remember, Restoring Snapshot always creates brand new DB instance.
+Choose DB instance identifier as "a4lwordpress-restore"
+Choose the right VPC
+Under VPC security group, choose existing, 
+Click the drop down and remove default and add RDSMULTIAZ RDS SECURITY GROUP
+Under DB Instance Class - Choose Burstable, choose include previous generation classes
+and select db.t2.micro
+rest of the things are default and go ahead click on restore
+Once it's completed, go to next step
+
+
+#EC2 INSTANCE
+Login to ec2 instance
+edit this file sudo nano /var/www/html/wp-config.php
+Update the 'DB_HOST' to the restore db endpoint i.e, a4lwordpress-restore
+Now go back to wordpress application and refresh it.
+It will give you the old page.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
