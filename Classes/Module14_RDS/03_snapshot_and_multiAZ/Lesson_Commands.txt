@@ -3,10 +3,12 @@
 #Tiny url
 https://tinyurl.com/yckw67ut
 
+accept the default and create stack
+
 # Connect to EC2 instance "A4L-Wordpress"
 Configure the wordpress by entering admin as user id and password from CF parameter.
 Copy the public ip of the instance and open up in the Google chrome.
-Delete the "hello-world" post and upload those 4 images of cats.
+Delete the "hello-world" post and upload some images
 
 Note: you can verify the wp-config.php to find the out the DB_HOST that it's really connecting to RDS or not
 
@@ -14,21 +16,26 @@ Note: you can verify the wp-config.php to find the out the DB_HOST that it's rea
 Select the Database
 Click Actions
 Take Snapshot
-Snapshot Name :   a4lwordpress-with-cat-post-mysql-5-7
+Snapshot Name :   a4lwordpress-with-bike-post-mysql-5-7
 click Take Snapshot
+Make sure the status changes to Available status
 
 #How to Enable Multi-AZ RDS mode
-Make sure to selecte the DB instance and click on Modify
-Choose Multi-AZ and rest all keep it defaults and click Next
-Choose "Apply Immediately"
+Make sure to select the DB instance and click on Modify
+Choose Multi-AZ and rest all keep it defaults and click Next  // no need to enter any password or change the DB engine version
+Under availability and durability section, choose "create a standby instance"
+Click Next
+Under Scheduling MOdification 
+Choose "Apply Immediately" -> Click Modify Database
 After it became available, please click the database instance, Click Configuration
 You will see the Multi-AZ as Yes and Secondary Zone would be displaying.
 
 #How to Simulate the Failover of Multi-AZ
-Select the DB instance, click Actions
+Choose the DB instance and get inside, click Actions
 Click Reboot and select "Reboot with Failover?" and Click Confirm
 Now verify the wordpress page
 and in the aws console, click the DB and you can the AZ column, it has taken the secondary AZ name.
+It normally taks 15-20 mins to reflect the AZ
 
 #How to restore RDS if we have Data Corruption
 Go back to wordpress site and edit the title with some wrong information and publish
@@ -43,6 +50,7 @@ Under DB Instance Class - Choose Burstable, choose include previous generation c
 and select db.t2.micro
 rest of the things are default and go ahead click on restore
 Once it's completed, go to next step
+This will take 15 - 20 mins max
 
 
 #EC2 INSTANCE
